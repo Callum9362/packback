@@ -19,9 +19,22 @@
         </style>
     </head>
     <body class="antialiased">
-
+        <div class="d-flex justify-content-center">
+            <div id="hello-world"></div>
+        </div>
     </body>
 </html>
 
 
-
+<script>
+    $(document).ready(function() {
+        let name = "{{ $name }}";
+        $.ajax({
+            type: 'GET',
+            url: '/api/hello?name=' + name,
+            success: function(response) {
+                $('#hello-world').text(response.msg);
+            }
+        })
+    });
+</script>
